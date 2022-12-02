@@ -1,0 +1,1 @@
+I am tiny bot. I follow #IranRevolution news! 
