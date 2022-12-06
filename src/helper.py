@@ -10,6 +10,13 @@ import pandas as pd
 
 from os.path import isfile
 
+import logging
+
+logging.basicConfig(filename="app_python.log",
+                    filemode='a',
+                    format='%(asctime)s %(message)s', level=logging.INFO)
+
+
 def skip_redirect(uri: str) -> str:
     """ Returns destination URI when given redirect URI."""
     return requests.get(uri).url
@@ -43,15 +50,20 @@ def get_news(title = "Iran Protests"):
     if results is None:
         results
     else:
-        results_dict_list = [
-                {
-                    'title':res['title'],
-                    'url': skip_redirect("https://" + res['link']),
-                    'datetime': res['datetime'],
-                    'retreived': datetime.now(),
-                    'tweeted': 0,
-                } for res in results
-            ]
+        results_dict_list = [] 
+        for res in results:
+            try:
+                url = skip_redirect("https://" + res['link'])
+                next_news = {
+                        'title':res['title'],
+                        'url': url,
+                        'datetime': res['datetime'],
+                        'retreived': datetime.now(),
+                        'tweeted': 0,
+                    }
+                results_dict_list.append(next_news)
+            except:
+                logging.info(f"URL for {'https://' + res['link']} not retreived.")
         return pd.DataFrame(results_dict_list)
 
 def recycle_data(data_new):
