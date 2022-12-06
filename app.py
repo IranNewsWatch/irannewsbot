@@ -3,7 +3,9 @@ import logging
 
 import os
 
-logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+logging.basicConfig(filename="app_python.log",
+                    filemode='a',
+                    format='%(asctime)s %(message)s', level=logging.INFO)
 logging.info(f'Logging started from {os.getcwd()}.')
 
 
