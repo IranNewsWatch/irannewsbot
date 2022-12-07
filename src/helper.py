@@ -89,10 +89,9 @@ def update_data(data, filename):
     
 def tweet(text, url, hashtags="#IranRevolution", key_folder=""):
     news_source = guess_news_source(url).upper()
-    hashtags = hashtags + " #" + news_source
+    # hashtags = hashtags + " #" + news_source
+    hashtags = "#"+news_source
     text = f"{text}\n{hashtags}\n{url}"
     client = get_client(keys_path=key_folder+"twitterkeys.yaml")
     client.create_tweet(text=text)
     return text
-
-

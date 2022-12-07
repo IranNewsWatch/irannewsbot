@@ -24,16 +24,20 @@ news_df =  helper.get_news()
 logging.info(f"Updating data in {data_log}")
 data_new = helper.update_data(news_df, data_log)
 
-#try:
+
+#drop if no Iran in the title
+data_new.loc[~data_new['url'].fillna("").apply(lambda x: str(x).lower().replace(".","")).str.contains("iran"), 'tweeted'] = -1
+
 news_tile, news_url = data_new.query("tweeted==0")[['title', 'url']].head(1).values[0]
 
 data_new.loc[data_new['url'] == news_url, 'tweeted'] = 1
 
-text = helper.tweet(
-        text=news_tile,
-        url=news_url,
-        key_folder=home_folder + "/Documents/keys/",
-    )
+# text = helper.tweet(
+#         text=news_tile,
+#         url=news_url,
+#         key_folder=home_folder + "/Documents/keys/",
+#     )
+text = 'not tweeting for now'
 
 logging.info(f"TWEET: {text}")
 
