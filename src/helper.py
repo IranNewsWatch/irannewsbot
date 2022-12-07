@@ -1,6 +1,7 @@
 
 import requests
 from urllib.parse import urlparse
+from tld import get_tld
 from GoogleNews import GoogleNews
 import yaml
 import pandas
@@ -23,8 +24,8 @@ def skip_redirect(uri: str) -> str:
 
 def guess_news_source(uri):   
     """Uses URL to extract website main domain and returns it as news source."""
-    domain = urlparse(uri).netloc
-    return domain.split('.')[-2]
+    res = get_tld(uri, as_object=True)
+    return res.domain
 
 def create_tweet_text(text: str, hashtags: str, url: str):
     """Aggregate tweet text and hashtags."""
