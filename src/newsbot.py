@@ -82,7 +82,7 @@ class NewsBot():
   def _create_tweet_text(text:str, hashtag:str, url:str) -> str:
     """Aggregate tweet text and hashtag and makes sure it won't reach 280 chars."""
     cutoff = 280 - len(hashtag) - 5 # for buffer lets leave 5 out
-    return text[:cutoff] + "\n" + hashtag + "\n" + url
+    return text[:cutoff] + "\n#" + hashtag + "\n" + url
 
   #___________Woman_Life_Freedom____________#
   def _isbadnews(self, url:str) -> bool:
