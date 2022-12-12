@@ -1,0 +1,43 @@
+keywords_to_exclude:
+  - kayhan.london
+
+shit_news_sources:
+  - mehrnews
+  - kayhan
+  - isna
+  - irna
+  - ilna
+  - tasnim
+  - tabnak
+  - eslahat
+  - fars
+  - khabar
+  - irib
+  - mashregh
+  - shagh
+  - eghtesad
+  - borna
+  - mojnews
+  - aftab
+  - davari
+  - pishkhan
+  - sputnik
+  - spnfa
+  - russia
+  - imna
+  - vista
+  - setare
+  - presstv
+  - alalam
+  - parstimes
+  - mojahed
+  - mojaahed
+  - mek
+  - ncri
+
+shit_news_extension:
+  - ir
+  - ru
+  - sy
+  - ve
+  - lb
